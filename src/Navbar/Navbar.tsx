@@ -22,10 +22,6 @@ const Navbar = () => {
             <NavLink to="/new">new</NavLink>
           </li>
           <li>|</li>
-          <li>
-            <NavLink to="/past">past</NavLink>
-          </li>
-          <li>|</li>
 
           <li>
             <NavLink to="/ask">ask</NavLink>
@@ -41,9 +37,9 @@ const Navbar = () => {
         </ul>
       </div>
 
-      <a id="login" href="/">
+      <NavLink id="login" to="/login">
         login
-      </a>
+      </NavLink>
     </div>
   );
 };

@@ -26,7 +26,7 @@ class Story extends Component<Props, State> {
     );
   }
   render() {
-    const story = this.state.story.type === "story" ? this.state.story : null;
+    const story = this.state.story.type ? this.state.story : null;
 
     const { score, by, time, descendants, id, kids } = this.state.story;
     console.log(story);

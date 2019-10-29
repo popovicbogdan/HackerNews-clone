@@ -26,20 +26,31 @@ class Home extends Component<Props, State> {
 
   handleClick = (e: any) => {
     const { firstIndex, lastIndex, counter } = this.state.scroll;
-    this.setState({
-      ...this.state,
-      scroll: {
-        firstIndex: firstIndex + 30,
-        lastIndex: lastIndex + 30,
-        counter: counter + 1
-      }
-    });
+    if (e.target.value === "more") {
+      this.setState({
+        ...this.state,
+        scroll: {
+          firstIndex: firstIndex + 30,
+          lastIndex: lastIndex + 30,
+          counter: counter + 1
+        }
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        scroll: {
+          firstIndex: firstIndex - 30,
+          lastIndex: lastIndex - 30,
+          counter: counter - 1
+        }
+      });
+    }
   };
 
   getStories = (search: string) => {
     axios
       .get(
-        `https://hacker-news.firebaseio.com/v0/${this.props.search}stories.json?print=pretty`
+        `https://hacker-news.firebaseio.com/v0/${search}stories.json?print=pretty`
       )
       .then(res => {
         this.setState({
@@ -58,9 +69,18 @@ class Home extends Component<Props, State> {
   }
   render() {
     console.log("HOme rendered");
-
+    const style = this.state.scroll.counter === 0 ? { display: "none" } : null;
     return (
       <div className="Home container">
+        <button
+          type="button"
+          className="bttn less"
+          value="less"
+          onClick={this.handleClick}
+          style={style}
+        >
+          less
+        </button>
         <ol start={this.state.scroll.firstIndex + 1}>
           {this.state.items
             ? this.state.items
@@ -75,7 +95,12 @@ class Home extends Component<Props, State> {
                 ))
             : null}
         </ol>
-        <button type="button" className="more" onClick={this.handleClick}>
+        <button
+          type="button"
+          className="bttn"
+          value="more"
+          onClick={this.handleClick}
+        >
           more
         </button>
       </div>

@@ -30,7 +30,7 @@ const Info: React.FC<Props> = props => {
               to={{
                 pathname: link,
                 state: {
-                  userId: props.info.kids
+                  userId: props.info.by
                 }
               }}
             >

@@ -4,6 +4,7 @@ import User from "./User";
 import { Route, Switch } from "react-router-dom";
 import Submissions from "./Submissions";
 import Comments from "./Comments";
+import Login from "./Login";
 
 class Dashboard extends Component {
   constructor(props: any) {
@@ -41,6 +42,7 @@ class Dashboard extends Component {
           <Route path="/user/:id" component={User} />
           <Route path="/submitted/:author" component={Submissions} />
           <Route path="/item/:id" component={Comments} />
+          <Route path="/login" component={Login} />
         </Switch>
       </div>
     );

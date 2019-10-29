@@ -5,6 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: rgb(241, 241, 241);
 }
 
 code {
@@ -56,6 +57,10 @@ code {
   font-size: 0.8rem;
   color: gray;
   margin: 0 5px;
+}
+.Dashboard {
+  width: 90%;
+  margin-bottom: 25px;
 }
 .Dashboard .Home,
 .Info,
@@ -119,11 +124,20 @@ code {
   border-radius: 50%;
   cursor: pointer;
 }
-.more {
-  background-color: white;
+.bttn {
+  background-color: transparent;
   border: none;
   margin-left: 30px;
 }
-.more:hover {
+.bttn:hover {
   cursor: pointer;
+}
+.bttn.less {
+  margin-top: 15px;
+}
+.Story {
+  border-bottom: 1px solid rgb(201, 201, 201);
+}
+.submitted .Story {
+  margin: 0;
 }

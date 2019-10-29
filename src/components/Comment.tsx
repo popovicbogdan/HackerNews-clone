@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 import { mapTime } from "../functions/mapTime";
 import { Link } from "react-router-dom";
+
 interface Props {
   item: number;
+  type?: string;
 }
+
 interface State {
   comment: any;
 }
@@ -38,8 +41,9 @@ class Comment extends Component<Props, State> {
 
     const link = this.state.comment ? `/user/${this.state.comment.by}` : "";
 
-    return this.state.comment ? (
-      <div className="Comment container">
+    const style = this.props.type ? { paddingLeft: "10%" } : null;
+    const comment = this.state.comment ? (
+      <div className="Comment container" style={style}>
         <ul>
           <li>
             <button type="button" className="upvote">
@@ -51,7 +55,7 @@ class Comment extends Component<Props, State> {
               to={{
                 pathname: link,
                 state: {
-                  userId: this.state.comment.kids
+                  userId: this.state.comment.by
                 }
               }}
             >
@@ -67,8 +71,16 @@ class Comment extends Component<Props, State> {
             __html: this.htmlDecode(this.state.comment.text)
           }}
         />
+
+        {this.state.comment.kids
+          ? this.state.comment.kids.map((item: any) => (
+              <Comment item={item} type="sub" />
+            ))
+          : null}
       </div>
     ) : null;
+
+    return <div>{comment}</div>;
   }
 }
 
