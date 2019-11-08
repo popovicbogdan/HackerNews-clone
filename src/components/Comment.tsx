@@ -13,7 +13,7 @@ interface State {
 }
 
 class Comment extends Component<Props, State> {
-  constructor(props: any) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       comment: null
