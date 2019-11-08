@@ -10,7 +10,7 @@ interface State {
   scroll: { firstIndex: number; lastIndex: number; counter: number };
 }
 class Home extends Component<Props, State> {
-  constructor(props: any) {
+  constructor(props: Props) {
     super(props);
     this.state = {
       items: [],
